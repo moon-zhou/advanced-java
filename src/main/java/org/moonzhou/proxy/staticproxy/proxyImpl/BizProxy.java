@@ -1,6 +1,6 @@
-package org.moonzhou.proxy.dynamicproxy.proxyImpl;
+package org.moonzhou.proxy.staticproxy.proxyImpl;
 
-import org.moonzhou.proxy.dynamicproxy.IBiz;
+import org.moonzhou.proxy.staticproxy.IBiz;
 
 /**
  * @Description
