@@ -1,6 +1,6 @@
-package org.moonzhou.proxy.staticproxy.impl;
+package org.moonzhou.proxy.impl;
 
-import org.moonzhou.proxy.staticproxy.IBiz;
+import org.moonzhou.proxy.IBiz;
 
 /**
  * @Description 业务逻辑实现类

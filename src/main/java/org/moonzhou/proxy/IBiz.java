@@ -1,4 +1,4 @@
-package org.moonzhou.proxy.staticproxy;
+package org.moonzhou.proxy;
 
 /**
  * @Description 业务接口抽象
