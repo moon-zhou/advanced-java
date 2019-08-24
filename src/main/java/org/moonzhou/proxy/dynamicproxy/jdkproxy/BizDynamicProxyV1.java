@@ -1,4 +1,4 @@
-package org.moonzhou.proxy.dynamicproxy;
+package org.moonzhou.proxy.dynamicproxy.jdkproxy;
 
 import java.lang.reflect.Method;
 
