@@ -17,7 +17,7 @@ public class TestStaticProxy {
     public void testRun() {
         IBiz biz = new BizImpl();
 
-        BizProxy bizProxy = new BizProxy(biz);
+        IBiz bizProxy = new BizProxy(biz);
 
         bizProxy.execute();
     }
