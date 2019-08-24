@@ -1,4 +1,4 @@
-package org.moonzhou.proxy.staticproxy.proxyImpl;
+package org.moonzhou.proxy.staticproxy;
 
 import org.moonzhou.proxy.IBiz;
 
@@ -9,20 +9,20 @@ import org.moonzhou.proxy.IBiz;
  * @Since 1.0
  * @Date 2019/8/24
  */
-public class BizProxy implements IBiz {
+public class BizStaticProxy implements IBiz {
 
     private IBiz biz;
 
-    public BizProxy(IBiz biz) {
+    public BizStaticProxy(IBiz biz) {
         this.biz = biz;
     }
 
     @Override
     public void execute() {
-        System.out.println("before biz...");
+        System.out.println("static proxy: before biz...");
 
         biz.execute();
 
-        System.out.println("after biz...");
+        System.out.println("static proxy: after biz...");
     }
 }

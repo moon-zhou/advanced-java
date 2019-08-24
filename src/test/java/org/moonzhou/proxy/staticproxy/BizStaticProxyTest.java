@@ -3,7 +3,6 @@ package org.moonzhou.proxy.staticproxy;
 import org.junit.Test;
 import org.moonzhou.proxy.IBiz;
 import org.moonzhou.proxy.impl.BizImpl;
-import org.moonzhou.proxy.staticproxy.proxyImpl.BizProxy;
 
 /**
  * @Description 测试静态代理
@@ -12,13 +11,13 @@ import org.moonzhou.proxy.staticproxy.proxyImpl.BizProxy;
  * @Since 1.0
  * @Date 2019/8/24
  */
-public class TestStaticProxy {
+public class BizStaticProxyTest {
 
     @Test
     public void testRun() {
         IBiz biz = new BizImpl();
 
-        IBiz bizProxy = new BizProxy(biz);
+        IBiz bizProxy = new BizStaticProxy(biz);
 
         bizProxy.execute();
     }
