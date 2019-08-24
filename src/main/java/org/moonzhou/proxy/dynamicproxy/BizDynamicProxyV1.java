@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 public class BizDynamicProxyV1 extends DynamicProxy {
 
     /**
-     * 代理类里包含了具体的业务逻辑，因为避免静态代理类的爆照，动态代理只有一个，需要将代理时需要完成的业务进行解耦
+     * 代理类里包含了具体的业务逻辑，因为避免静态代理类的爆炸，动态代理只有一个，需要将代理时需要完成的业务进行解耦
      * @param proxy
      * @param method
      * @param args
