@@ -30,7 +30,7 @@ public abstract class DynamicProxy implements InvocationHandler {
      * @param object
      * @return
      */
-    public Object bind(Object object) {
+    public Object newProxy(Object object) {
         this.target = object;
 
         return Proxy.newProxyInstance(this.target.getClass().getClassLoader(), this.target.getClass().getInterfaces(), this);

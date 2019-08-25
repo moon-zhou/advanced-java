@@ -17,7 +17,7 @@ public class BizDynamicProxyV2 extends DynamicProxy {
      */
     private Object proxy;
 
-    public Object bind(Object target, Object proxy) {
+    public Object newProxy(Object target, Object proxy) {
         this.setTarget(target);
         this.proxy = proxy;
 

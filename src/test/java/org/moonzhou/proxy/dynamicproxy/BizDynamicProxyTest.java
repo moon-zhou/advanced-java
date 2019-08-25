@@ -20,7 +20,7 @@ public class BizDynamicProxyTest {
 
         DynamicProxy bizDynamicProxyV1 = new BizDynamicProxyV1();
 
-        IBiz bizProxy = (IBiz) bizDynamicProxyV1.bind(biz);
+        IBiz bizProxy = (IBiz) bizDynamicProxyV1.newProxy(biz);
         bizProxy.execute();
     }
 
@@ -34,7 +34,7 @@ public class BizDynamicProxyTest {
 
         // 创建代理
         BizDynamicProxyV2 bizDynamicProxyV2 = new BizDynamicProxyV2();
-        IBiz bizProxy = (IBiz) bizDynamicProxyV2.bind(biz, log);
+        IBiz bizProxy = (IBiz) bizDynamicProxyV2.newProxy(biz, log);
         bizProxy.execute();
     }
 }
