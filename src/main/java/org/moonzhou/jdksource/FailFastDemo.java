@@ -1,6 +1,7 @@
 package org.moonzhou.jdksource;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * fail-fast demo <br>
@@ -16,9 +17,11 @@ public class FailFastDemo {
 
         //testStringArrayList();
 
+        testArrayListItr();
+
         //testUserArrayList();
 
-        testHashMap();
+        //testHashMap();
     }
 
     private static void testStringArrayList() {
@@ -56,6 +59,21 @@ public class FailFastDemo {
             features.add("function");
         });*/
 
+    }
+
+    private static void testArrayListItr() {
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        Iterator<Integer> itr = integers.iterator();
+        while (itr.hasNext()) {
+            Integer a = itr.next();
+            integers.remove(a);
+
+            // 使用该方法可以避开java.util.ConcurrentModificationException
+            //itr.remove();
+        }
     }
 
     private static void testUserArrayList() {
