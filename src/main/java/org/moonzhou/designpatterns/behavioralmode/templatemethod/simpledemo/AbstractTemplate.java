@@ -30,7 +30,7 @@ public abstract class AbstractTemplate {
     /**
      * 基本方法（已经实现）
      */
-    private final void concreteMethod(){
+    private void concreteMethod(){
         //业务相关的代码
     }
 }
