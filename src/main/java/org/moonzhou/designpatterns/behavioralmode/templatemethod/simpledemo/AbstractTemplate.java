@@ -10,7 +10,7 @@ public abstract class AbstractTemplate {
     /**
      * 模板方法
      */
-    public void templateMethod(){
+    public final void templateMethod(){
         //调用基本方法
         abstractMethod();
         hookMethod();

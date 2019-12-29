@@ -16,7 +16,7 @@ public abstract class AbstractElephantFridgeProblem {
      *     3. 把冰箱门关上
      *     4. 噢耶
      */
-    public void putElephantInFridge() {
+    public final void putElephantInFridge() {
 
         openFridgeDoor();
 
