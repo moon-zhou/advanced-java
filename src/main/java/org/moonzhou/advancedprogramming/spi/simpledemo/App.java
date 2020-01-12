@@ -17,21 +17,21 @@ public class App {
     public static void main(String[] args) {
 
         // 测试加载方式一
-        Iterator<SPIService> providers = Service.providers(SPIService.class);
-
-        while (providers.hasNext()) {
-            SPIService service = providers.next();
-            service.execute();
-        }
-
-        System.out.println();
-
-        // 测试加载方式二
         ServiceLoader<SPIService> load = ServiceLoader.load(SPIService.class);
         Iterator<SPIService> loadSpiService = load.iterator();
         while (loadSpiService.hasNext()) {
             SPIService spiService = loadSpiService.next();
             spiService.execute();
+        }
+
+        System.out.println();
+
+        // 测试加载方式二
+        Iterator<SPIService> providers = Service.providers(SPIService.class);
+
+        while (providers.hasNext()) {
+            SPIService service = providers.next();
+            service.execute();
         }
     }
 }
