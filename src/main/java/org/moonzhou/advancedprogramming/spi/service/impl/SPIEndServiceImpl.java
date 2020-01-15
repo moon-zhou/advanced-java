@@ -1,6 +1,6 @@
-package org.moonzhou.advancedprogramming.spi.simpledemo.impl;
+package org.moonzhou.advancedprogramming.spi.service.impl;
 
-import org.moonzhou.advancedprogramming.spi.simpledemo.SPIService;
+import org.moonzhou.advancedprogramming.spi.service.SPIService;
 
 /**
  * @Description spi实现之二

@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.spi.simpledemo;
+package org.moonzhou.advancedprogramming.spi.service;
 
 /**
  * SPI测试接口

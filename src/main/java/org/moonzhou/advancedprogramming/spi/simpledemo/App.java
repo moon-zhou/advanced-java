@@ -1,5 +1,6 @@
 package org.moonzhou.advancedprogramming.spi.simpledemo;
 
+import org.moonzhou.advancedprogramming.spi.service.SPIService;
 import sun.misc.Service;
 
 import java.util.Iterator;
@@ -23,6 +24,11 @@ public class App {
             SPIService spiService = loadSpiService.next();
             spiService.execute();
         }
+
+        load.forEach(spiService -> {
+            System.out.println(spiService.getClass().getName() + ".execute():");
+            spiService.execute();
+        });
 
         System.out.println();
 
