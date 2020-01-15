@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.moon-zhou</groupId>
-  <artifactId>distributed-lock</artifactId>
+  <artifactId>advanced-java</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>distributed-lock</name>
+  <name>advanced-java</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -23,7 +23,8 @@
     <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
-      <version>3.1.0</version>
+      <!--<version>3.1.0</version>-->
+      <version>3.0.1</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/cglib/cglib -->
@@ -38,6 +39,13 @@
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
       <version>3.5.5</version>
+    </dependency>
+
+    <!-- spring -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.2.0.RELEASE</version>
     </dependency>
 
     <dependency>

@@ -1,0 +1,3 @@
+org.moonzhou.advancedprogramming.spi.service.SPIService =\
+  org.moonzhou.advancedprogramming.spi.service.impl.SPIStartServiceImpl,\
+  org.moonzhou.advancedprogramming.spi.service.impl.SPIEndServiceImpl
