@@ -1,7 +1,10 @@
 package org.moonzhou.distributedlock.util;
 
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,12 +21,17 @@ import java.util.List;
  */
 public class ZKClientTest {
 
+    // 单机配置
+    //    private static String CONNECT_SERVER = "127.0.0.1:2181";
+    private static int SESSION_TIMEOUT = 3000;
     // 此demo使用的集群，所以有多个ip和端口
     private static String CONNECT_SERVER = "127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183";
-    private static int SESSION_TIMEOUT = 3000;
     private static int CONNECTION_TIMEOUT = 3000;
 
-    private static ZooKeeper zkClient;
+    /**
+     * 类变量加载一次客户端
+     */
+    /*private static ZooKeeper zkClient;
 
     static {
         try {
@@ -41,12 +49,47 @@ public class ZKClientTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+
+    private ZooKeeper zkClient;
+
+    /**
+     * Before会在每次test方法执行前执行，因此每一次运行结束，都需要通过After关闭客户端
+     *
+     * @throws Exception
+     */
+    @Before
+    public void init() throws Exception {
+        System.out.println("init zk client......");
+
+        zkClient = new ZooKeeper(CONNECT_SERVER, SESSION_TIMEOUT, new Watcher() {
+            public void process(WatchedEvent watchedEvent) {
+                //收到事件通知后的回调函数（应该是我们自己的事件处理逻辑）
+                System.out.println("回调函数：" + watchedEvent.getType() + "---" + watchedEvent.getPath());
+                try {
+                    zkClient.getChildren("/", true);
+                } catch (Exception e) {
+                }
+            }
+        });
+    }
+
+    @After
+    public void closeClient() throws InterruptedException {
+        System.out.println("close client......");
+
+        zkClient.close();
     }
 
     /**
      * 数据的增删改查
      */
-    // 创建数据节点到zk中
+
+    /**
+     * 创建数据节点到zk中
+     *
+     * @throws Exception
+     */
     @Test
     public void testCreate() throws Exception {
         //参数1，要创建的节点的路径 参数2：节点数据 参数3：节点的权限 参数4：节点的类型
@@ -54,12 +97,31 @@ public class ZKClientTest {
         //上传的数据可以是任何类型，但都要转成byte[]
     }
 
-    //获取子节点
+    /**
+     * 获取子节点
+     *
+     * @throws Exception
+     */
     @Test
-    public void getChildren() throws Exception{
+    public void getChildren() throws Exception {
         List<String> children = zkClient.getChildren("/", true);
-        for (String child: children){
+        for (String child : children) {
             System.out.println(child);
         }
     }
+
+    @Test
+    public void deleteZnode() throws KeeperException, InterruptedException {
+
+        String node = "/idea";
+
+        Stat stat = zkClient.exists(node, false);
+        if (null != stat) {
+            System.out.println("node exist and then delete it.");
+            //参数2：指定要删除的版本，-1表示删除所有版本
+            zkClient.delete(node, -1);
+        }
+    }
+
+
 }
