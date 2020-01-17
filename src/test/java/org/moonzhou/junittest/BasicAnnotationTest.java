@@ -3,8 +3,8 @@ package org.moonzhou.junittest;
 import org.junit.*;
 
 /**
- * 〈一句话功能简述〉<br>
- * 〈功能详细描述〉
+ * Junit注解基本使用方法<br>
+ *     1. 注解调用顺序:@BeforeClass –> @Before –> @Test –> @After –> @AfterClass
  *
  * @author moon-zhou
  * @Date: 2020/1/17 14:27
@@ -45,5 +45,11 @@ public class BasicAnnotationTest {
     @Test
     public void test_method_2() {
         System.out.println("@Test - test_method_2");
+    }
+
+    @Ignore
+    @Test
+    public void testIgnore() {
+        System.out.println("忽略的方法");
     }
 }
