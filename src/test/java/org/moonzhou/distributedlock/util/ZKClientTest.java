@@ -80,7 +80,8 @@ public class ZKClientTest {
                 //收到事件通知后的回调函数（应该是我们自己的事件处理逻辑）
                 System.out.println("回调函数：" + watchedEvent.getType() + "---" + watchedEvent.getPath());
                 try {
-                    zkClient.getChildren("/", true);
+                    List<String> children = zkClient.getChildren("/", true);
+                    children.forEach(System.out::println);
                 } catch (Exception e) {
                 }
             }
@@ -118,9 +119,7 @@ public class ZKClientTest {
     @Test
     public void test002_GetChildren() throws Exception {
         List<String> children = zkClient.getChildren(ROOT, true);
-        for (String child : children) {
-            System.out.println(child);
-        }
+        children.forEach(System.out::println);
     }
 
     /**
