@@ -5,7 +5,6 @@ import org.apache.zookeeper.data.Stat;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,7 +18,7 @@ import java.util.List;
  * @since [产品/模块版本] （可选）
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ZKClientTest {
+public class ZooKeeperTest {
 
     // 单机配置
     //    private static String CONNECT_SERVER = "127.0.0.1:2181";
@@ -44,17 +43,17 @@ public class ZKClientTest {
     /**
      * 类变量加载一次客户端
      */
-    /*private static ZooKeeper zkClient;
+    /*private static ZooKeeper zooKeeper;
 
     static {
         try {
-            zkClient = new ZooKeeper(CONNECT_SERVER, SESSION_TIMEOUT, new Watcher() {
+            zooKeeper = new ZooKeeper(CONNECT_SERVER, SESSION_TIMEOUT, new Watcher() {
                 @Override
                 public void process(WatchedEvent watchedEvent) {
                     // 收到事件通知后的回调函数（应该是我们自己的事件处理逻辑）
                     System.out.println(watchedEvent.getType() + "---" + watchedEvent.getPath());
                     try {
-                        zkClient.getChildren("/", true);
+                        zooKeeper.getChildren("/", true);
                     } catch (Exception e) {
                     }
                 }
@@ -64,7 +63,7 @@ public class ZKClientTest {
         }
     }*/
 
-    private ZooKeeper zkClient;
+    private ZooKeeper zooKeeper;
 
     /**
      * Before会在每次test方法执行前执行，因此每一次运行结束，都需要通过After关闭客户端
@@ -75,12 +74,12 @@ public class ZKClientTest {
     public void init() throws Exception {
         System.out.println("init zk client......");
 
-        zkClient = new ZooKeeper(CONNECT_SERVER, SESSION_TIMEOUT, new Watcher() {
+        zooKeeper = new ZooKeeper(CONNECT_SERVER, SESSION_TIMEOUT, new Watcher() {
             public void process(WatchedEvent watchedEvent) {
                 //收到事件通知后的回调函数（应该是我们自己的事件处理逻辑）
                 System.out.println("回调函数：" + watchedEvent.getType() + "---" + watchedEvent.getPath());
                 try {
-                    List<String> children = zkClient.getChildren("/", true);
+                    List<String> children = zooKeeper.getChildren("/", true);
                     children.forEach(System.out::println);
                 } catch (Exception e) {
                 }
@@ -92,7 +91,7 @@ public class ZKClientTest {
     public void closeClient() throws InterruptedException {
         System.out.println("close client......");
 
-        zkClient.close();
+        zooKeeper.close();
     }
 
     /**
@@ -107,7 +106,7 @@ public class ZKClientTest {
     @Test
     public void test001_Create() throws Exception {
         //参数1，要创建的节点的路径 参数2：节点数据 参数3：节点的权限 参数4：节点的类型
-        String node = zkClient.create(TEST_NODE, "hellozk".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        String node = zooKeeper.create(TEST_NODE, "hellozk".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         //上传的数据可以是任何类型，但都要转成byte[]
     }
 
@@ -118,7 +117,7 @@ public class ZKClientTest {
      */
     @Test
     public void test002_GetChildren() throws Exception {
-        List<String> children = zkClient.getChildren(ROOT, true);
+        List<String> children = zooKeeper.getChildren(ROOT, true);
         children.forEach(System.out::println);
     }
 
@@ -131,10 +130,10 @@ public class ZKClientTest {
     @Test
     public void test003_GetData() throws KeeperException, InterruptedException {
 
-        Stat stat = zkClient.exists(TEST_NODE, false);
+        Stat stat = zooKeeper.exists(TEST_NODE, false);
         if (null != stat) {
 
-            byte[] data = zkClient.getData(TEST_NODE,false, null);
+            byte[] data = zooKeeper.getData(TEST_NODE,false, null);
 
             System.out.println(new String(data));
 
@@ -154,11 +153,11 @@ public class ZKClientTest {
     @Test
     public void test004_SetData() throws KeeperException, InterruptedException {
 
-        Stat stat = zkClient.exists(TEST_NODE, false);
+        Stat stat = zooKeeper.exists(TEST_NODE, false);
         if (null != stat) {
 
-            zkClient.setData("/idea", "hellomoon".getBytes(), -1);
-            byte[] data = zkClient.getData("/idea", false, null);
+            zooKeeper.setData("/idea", "hellomoon".getBytes(), -1);
+            byte[] data = zooKeeper.getData("/idea", false, null);
             System.out.println(new String(data));
         } else {
             nodeNotExitsOutPrint();
@@ -175,11 +174,11 @@ public class ZKClientTest {
     @Test
     public void test005_DeleteZnode() throws KeeperException, InterruptedException {
 
-        Stat stat = zkClient.exists(TEST_NODE, false);
+        Stat stat = zooKeeper.exists(TEST_NODE, false);
         if (null != stat) {
             System.out.println("node exist and then delete it.");
             //参数2：指定要删除的版本，-1表示删除所有版本
-            zkClient.delete(TEST_NODE, -1);
+            zooKeeper.delete(TEST_NODE, -1);
         } else {
             nodeNotExitsOutPrint();
         }
