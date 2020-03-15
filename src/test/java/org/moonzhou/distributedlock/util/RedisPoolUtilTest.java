@@ -1,6 +1,7 @@
 package org.moonzhou.distributedlock.util;
 
 import org.junit.Test;
+import org.moonzhou.distributedlock.redis.RedisPoolUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 

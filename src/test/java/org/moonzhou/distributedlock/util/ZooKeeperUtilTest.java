@@ -7,6 +7,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Before;
 import org.junit.Test;
+import org.moonzhou.distributedlock.zk.ZooKeeperUtil;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;

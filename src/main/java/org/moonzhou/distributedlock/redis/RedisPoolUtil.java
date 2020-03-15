@@ -1,4 +1,4 @@
-package org.moonzhou.distributedlock.util;
+package org.moonzhou.distributedlock.redis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;

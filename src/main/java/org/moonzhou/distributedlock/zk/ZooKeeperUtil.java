@@ -1,4 +1,4 @@
-package org.moonzhou.distributedlock.util;
+package org.moonzhou.distributedlock.zk;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
