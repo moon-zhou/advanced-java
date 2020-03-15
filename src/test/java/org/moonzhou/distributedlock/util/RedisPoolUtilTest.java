@@ -5,6 +5,8 @@ import org.moonzhou.distributedlock.redis.RedisPoolUtil;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 
+import java.util.Collections;
+
 import static org.junit.Assert.*;
 
 public class RedisPoolUtilTest {
@@ -50,9 +52,18 @@ public class RedisPoolUtilTest {
         SetParams setParams = new SetParams();
         setParams.nx();
         setParams.px(20000);
-        String  result = RedisPoolUtil.set(secondKey, secondValue, setParams);
+        String result = RedisPoolUtil.set(secondKey, secondValue, setParams);
 
         System.out.println(result);
     }
 
+    @Test
+    public void testDoLua() {
+        String luaScript = "if redis.call('get', KEYS[1]) == ARGV[1] " +
+                "then return redis.call('del', KEYS[1]) else return -1 end";
+
+        Object result = RedisPoolUtil.doLua(luaScript, Collections.singletonList(secondKey),  Collections.singletonList(secondValue));
+
+        System.out.println(result);
+    }
 }
