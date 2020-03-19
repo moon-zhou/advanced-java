@@ -20,6 +20,7 @@
 
   <dependencies>
     <!-- jedis包 -->
+    <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
     <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
@@ -38,6 +39,13 @@
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
       <version>3.5.6</version>
+      <!-- jedis里已经引入 -->
+      <!--<exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>-->
     </dependency>
 
     <!-- zkclient 实现的 zookeeper client -->
