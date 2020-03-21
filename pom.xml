@@ -6,7 +6,11 @@
 
   <groupId>org.moon-zhou</groupId>
   <artifactId>advanced-java</artifactId>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>agentdemo</module>
+  </modules>
 
   <name>advanced-java</name>
   <!-- FIXME change it to the project's website -->
