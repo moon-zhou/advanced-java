@@ -1,6 +1,7 @@
 ##### java agent实操记录
 
 1. 编写agent处理类
+1. 编写配置文件MANIFEST.MF（最后必须留有一个空行）
 1. 打jar包，注意配置（此示例使用maven）
 1. 运行测试（idea run configuration 的VM options需要添加）
    ```
@@ -9,6 +10,9 @@
    Error opening zip file or JAR manifest missing : 
    agent library failed to init: instrument
    
+   # 注意参数的传递
+   
+   # 正确的示例
    -javaagent:E:/CodeSpace/Workspaces/IdeaProjects/advanced-java/agentdemo/target/agentdemo-1.0-SNAPSHOT.jar=moon
    ```
 1. 如果使用命令，注意编码

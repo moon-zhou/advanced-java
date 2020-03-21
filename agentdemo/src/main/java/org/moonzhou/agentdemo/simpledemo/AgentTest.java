@@ -1,18 +1,24 @@
 package org.moonzhou.agentdemo.simpledemo;
 
-import java.lang.instrument.Instrumentation;
+import java.util.concurrent.TimeUnit;
 
 /**
- * @description java agent first simple demo
  * @author moon-zhou <ayimin1989@163.com>
  * @version V1.0.0
+ * @description agent测试main方法类
+ * @date 2020/3/21 15:30
  * @since 1.0
- * @date 2020/3/21
  */
 public class AgentTest {
-    public static void premain(String agentArgs, Instrumentation inst) {
-        System.out.println("premain start...");
+    public static void main(String[] args) throws Exception {
+        System.out.println("test agent, main method run start...");
 
-        System.out.println(agentArgs);
+        try {
+            TimeUnit.MILLISECONDS.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("test agent, main method run end...");
     }
 }
