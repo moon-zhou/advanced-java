@@ -14,22 +14,40 @@
     <packaging>jar</packaging>
 
     <build>
+
         <plugins>
+            <!--SimpleAgentV1 配置-->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        &lt;!&ndash;自动添加META-INF/MANIFEST.MF &ndash;&gt;
+                        <manifestEntries>
+                            <Premain-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV1</Premain-Class>
+                            <Agent-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV1</Agent-Class>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>-->
+
+            <!--SimpleAgentV2 配置-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
                     <archive>
-                        <!--自动添加META-INF/MANIFEST.MF -->
-                        <!--<manifest>
+                        <!--自动添加META-INF/MANIFEST_SimpleAgentV2.MF -->
+                        <manifest>
                             <addClasspath>true</addClasspath>
-                        </manifest>-->
+                        </manifest>
                         <manifestEntries>
-                            <Premain-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV1</Premain-Class>
-                            <Agent-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV1</Agent-Class>
-                            <!--<Can-Redefine-Classes>true</Can-Redefine-Classes>
-                            <Can-Retransform-Classes>true</Can-Retransform-Classes>-->
+                            <Premain-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV2</Premain-Class>
+                            <Agent-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV2</Agent-Class>
+                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
                     </archive>
                 </configuration>
