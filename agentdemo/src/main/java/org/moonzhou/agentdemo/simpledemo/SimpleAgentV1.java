@@ -15,4 +15,10 @@ public class SimpleAgentV1 {
 
         System.out.println(agentArgs);
     }
+
+    public static void premain(String agentArgs) {
+        System.out.println("premain start, no instrumentation...");
+
+        System.out.println(agentArgs);
+    }
 }
