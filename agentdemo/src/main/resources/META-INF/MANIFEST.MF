@@ -1,4 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: AgentTest
-Premain-Class: org.moonzhou.agentdemo.simpledemo.SimpleAgentV1
-Implementation-Version: 1.0-SNAPSHOT
+Premain-Class: org.moonzhou.agentdemo.simpledemo.SimpleAgentV3
+Agent-Class: org.moonzhou.agentdemo.simpledemo.SimpleAgentV3
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true

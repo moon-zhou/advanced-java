@@ -33,19 +33,40 @@
             </plugin>-->
 
             <!--SimpleAgentV2 配置-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
                     <archive>
-                        <!--自动添加META-INF/MANIFEST_SimpleAgentV2.MF -->
+                        &lt;!&ndash;自动添加META-INF/MANIFEST_SimpleAgentV2.MF &ndash;&gt;
                         <manifest>
                             <addClasspath>true</addClasspath>
                         </manifest>
                         <manifestEntries>
                             <Premain-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV2</Premain-Class>
                             <Agent-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV2</Agent-Class>
+                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>-->
+
+            <!--SimpleAgentV3 配置-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <!--自动添加META-INF/MANIFEST_SimpleAgentV3.MF -->
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                        <manifestEntries>
+                            <Premain-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV3</Premain-Class>
+                            <Agent-Class>org.moonzhou.agentdemo.simpledemo.SimpleAgentV3</Agent-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
