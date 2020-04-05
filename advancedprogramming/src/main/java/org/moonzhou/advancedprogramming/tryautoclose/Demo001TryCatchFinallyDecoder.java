@@ -16,7 +16,7 @@ import java.net.URLDecoder;
  * @date 2020/4/4 22:28
  * @since 1.0
  */
-public class TryCatchFinallyDecoder {
+public class Demo001TryCatchFinallyDecoder {
     public static void main(String[] args) {
         BufferedReader br = null;
         try {
@@ -25,7 +25,7 @@ public class TryCatchFinallyDecoder {
              *
              * 如果使用相对路径，直接new FileReader("/考研资料.txt")，该初始化方式要求文件在src目录下，也与实际配置不符
              */
-            String path = TryCatchFinallyDecoder.class.getResource("/考研资料.txt").getFile();
+            String path = Demo001TryCatchFinallyDecoder.class.getResource("/考研资料.txt").getFile();
             String decodePath = URLDecoder.decode(path,"utf-8");
             br = new BufferedReader(new FileReader(decodePath));
 
