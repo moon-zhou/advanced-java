@@ -2,9 +2,6 @@ package org.moonzhou.proxy.dynamicproxy.jdkproxy;
 
 import org.junit.Test;
 import org.moonzhou.proxy.IBiz;
-import org.moonzhou.proxy.dynamicproxy.jdkproxy.BizDynamicProxyV1;
-import org.moonzhou.proxy.dynamicproxy.jdkproxy.BizDynamicProxyV2;
-import org.moonzhou.proxy.dynamicproxy.jdkproxy.DynamicProxy;
 import org.moonzhou.proxy.dynamicproxy.proxybiz.ILog;
 import org.moonzhou.proxy.dynamicproxy.proxybiz.impl.LogImpl;
 import org.moonzhou.proxy.impl.BizImpl;

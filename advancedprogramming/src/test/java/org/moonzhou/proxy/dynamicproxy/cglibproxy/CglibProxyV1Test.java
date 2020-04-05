@@ -1,16 +1,12 @@
 package org.moonzhou.proxy.dynamicproxy.cglibproxy;
 
-import java.util.Properties;
-
 import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.moonzhou.proxy.CommonBiz;
 import org.moonzhou.proxy.dynamicproxy.cglibproxy.v1.CglibProxyV1;
-import org.moonzhou.proxy.dynamicproxy.cglibproxy.v2.CglibProxyV2;
-import org.moonzhou.proxy.dynamicproxy.proxybiz.ILog;
-import org.moonzhou.proxy.dynamicproxy.proxybiz.impl.LogImpl;
+
+import java.util.Properties;
 
 /**
  * 测试cglib实现的动态代理
