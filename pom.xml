@@ -11,6 +11,8 @@
   <modules>
     <module>agentdemo</module>
     <module>agentdemo-test</module>
+    <module>advancedprogramming</module>
+    <module>designpatterns</module>
   </modules>
 
   <name>advanced-java</name>
@@ -128,5 +130,13 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+
   </build>
 </project>

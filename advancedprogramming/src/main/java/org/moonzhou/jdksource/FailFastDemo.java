@@ -1,7 +1,6 @@
 package org.moonzhou.jdksource;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * fail-fast demo <br>

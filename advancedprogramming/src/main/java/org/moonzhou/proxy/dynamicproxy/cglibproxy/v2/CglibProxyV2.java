@@ -3,7 +3,6 @@ package org.moonzhou.proxy.dynamicproxy.cglibproxy.v2;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.moonzhou.proxy.CommonBiz;
 
 import java.lang.reflect.Method;
 
