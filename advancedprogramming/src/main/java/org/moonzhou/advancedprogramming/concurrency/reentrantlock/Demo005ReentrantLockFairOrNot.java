@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.reentrantlock;
+package org.moonzhou.advancedprogramming.concurrency.reentrantlock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;

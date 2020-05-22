@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.reentrantlock;
+package org.moonzhou.advancedprogramming.concurrency.reentrantlock;
 
 import com.google.common.base.Stopwatch;
 
