@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.reference;
+package org.moonzhou.advancedprogramming.gc;
 
 import java.util.LinkedList;
 import java.util.List;
