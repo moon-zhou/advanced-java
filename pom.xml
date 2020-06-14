@@ -29,6 +29,7 @@
         <jackson-databind.version>2.11.0</jackson-databind.version>
         <jackson-core.version>2.11.0</jackson-core.version>
         <jackson-annotations.version>2.11.0</jackson-annotations.version>
+        <fastjson.version>1.2.70</fastjson.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -87,6 +88,11 @@
                 <version>${jackson-annotations.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
