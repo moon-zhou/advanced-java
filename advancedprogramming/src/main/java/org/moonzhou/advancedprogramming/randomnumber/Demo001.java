@@ -1,6 +1,9 @@
 package org.moonzhou.advancedprogramming.randomnumber;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 随机数示例<br>
@@ -14,7 +17,7 @@ import java.util.Random;
 public class Demo001 {
     public static void main(String[] args) {
 
-        testMathRandom();
+//        testMathRandom();
 
         testRandom();
     }
@@ -36,12 +39,30 @@ public class Demo001 {
 
         Random random = new Random();
 
+        // 并发安全
+        final Set<Integer> randomInt = ConcurrentHashMap.newKeySet();
+
         Runnable runnable = () -> {
-            System.out.println(random.nextInt(20));
+            // [0,num)的int类型的整数,包括0不包括num
+            // System.out.println(random.nextInt(20));
+
+            randomInt.add(random.nextInt(20));
         };
 
-        for (int i = 0; i < 10; i++) {
-            new Thread(runnable).start();
+        for (int i = 0; i < 1000; i++) {
+            Thread thread = new Thread(runnable);
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (999 == i) {
+                System.out.println("loop done...");
+            }
         }
+
+        System.out.println(randomInt);
     }
 }
