@@ -11,10 +11,7 @@
  */
 package org.moonzhou.practice.demo002loadbalance;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 功能描述:服务器信息配置类<br>
@@ -41,10 +38,10 @@ public class ServerInfo {
             "192.168.0.109");
 
     /**
-     * 带有权重配置的机器列表
-     * key为机器ip，value为列表
+     * 带有权重配置的机器列表，为了更好便于测试，使用有序Map
+     * key为机器ip，value为列表。
      */
-    public static Map<String, Integer> IP_WEIGHTLIST = new HashMap<>();
+    public static Map<String, Integer> IP_WEIGHTLIST = new LinkedHashMap<>();
 
     static {
         IP_WEIGHTLIST.put("192.168.0.100", 1);
