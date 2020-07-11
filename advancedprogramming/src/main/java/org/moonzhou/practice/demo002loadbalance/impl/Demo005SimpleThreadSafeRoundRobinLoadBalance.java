@@ -35,6 +35,8 @@ public class Demo005SimpleThreadSafeRoundRobinLoadBalance implements LoadBalance
      * 未初始化默认值为0，
      * 并发安全，是用原子包装类，但是因为有set的单独方法，其实还是有安全问题，需要加上锁，保证整个重置和最终获取值，以及获取完值之后+1的操作原子性。
      *
+     * 也可以简化成无锁，获取值是，不是直接使用index的位置，而是使用index % ipList.size()来作为数组的位置，这样只需要Atomic保证获取值和++操作的原子性即可
+     *
      */
     private static AtomicInteger index = new AtomicInteger();
 
