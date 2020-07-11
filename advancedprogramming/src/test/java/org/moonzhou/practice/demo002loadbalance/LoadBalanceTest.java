@@ -3,11 +3,7 @@ package org.moonzhou.practice.demo002loadbalance;
 import org.junit.Test;
 import org.moonzhou.practice.demo002loadbalance.impl.*;
 
-import java.util.Random;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
-import static com.google.common.collect.ComparisonChain.start;
 
 /**
  * 负载均衡算法测试
@@ -105,4 +101,71 @@ public class LoadBalanceTest {
 
         System.out.println("end......");
     }
+
+    /**
+     * 不带权重的轮询，测试线程安全
+     */
+    @Test
+    public void testSimpleThreadSafeRoundRobinLoadBalance2() {
+        LoadBalance loadBalance = new Demo006SimpleThreadSafeRoundRobinLoadBalance();
+
+        CountDownLatch latch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            new Thread(() -> {
+                System.out.println(Thread.currentThread().getName() + "  " + loadBalance.getServer());
+
+                latch.countDown();
+            }, "线程" + String.valueOf(i)).start();
+
+        }
+
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("end......");
+    }
+
+    /**
+     * 测试偏移轮询，模拟高并发
+     */
+    @Test
+    public void testOffsetWeightRoundRobinLoadBalance() {
+        LoadBalance loadBalance = new Demo007OffsetWeightRoundRobinLoadBalance();
+
+        CountDownLatch latch = new CountDownLatch(20);
+        for (int i = 0; i < 20; i++) {
+            new Thread(() -> {
+                System.out.println(Thread.currentThread().getName() + "  " + loadBalance.getServer());
+
+                latch.countDown();
+            }, "线程" + String.valueOf(i)).start();
+
+        }
+
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("end......");
+    }
+
+    /**
+     * 测试偏移轮询，模拟单线程，功能测试
+     */
+    @Test
+    public void testOffsetWeightRoundRobinLoadBalance2() {
+        LoadBalance loadBalance = new Demo007OffsetWeightRoundRobinLoadBalance();
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(loadBalance.getServer());
+        }
+
+        System.out.println("end......");
+    }
+
 }

@@ -56,4 +56,15 @@ public class ServerInfo {
         IP_WEIGHTLIST.put("192.168.0.109", 1);
     }
 
+    /**
+     * 带权重的ip配置，简化数据方便测试
+     */
+    public static Map<String, Integer> IP_WEIGHTLIST_LITTLE = new LinkedHashMap<>();
+
+    static {
+        IP_WEIGHTLIST_LITTLE.put("192.168.0.100", 3);
+        IP_WEIGHTLIST_LITTLE.put("192.168.0.101", 4);
+        IP_WEIGHTLIST_LITTLE.put("192.168.0.102", 3);
+    }
+
 }
