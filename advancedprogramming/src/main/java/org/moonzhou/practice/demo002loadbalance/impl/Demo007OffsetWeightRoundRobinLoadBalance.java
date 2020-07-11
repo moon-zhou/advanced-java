@@ -15,11 +15,10 @@ import org.moonzhou.practice.demo002loadbalance.LoadBalance;
 import org.moonzhou.practice.demo002loadbalance.ServerInfo;
 
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 /**
- * 功能描述:<br>
+ * 功能描述:线程不安全的加权轮询算法<br>
+ *     偏移量方式
  *
  * @author moon-zhou
  * @see [相关类/方法]（可选）

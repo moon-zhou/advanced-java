@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 功能描述:完全轮询算法<br>
@@ -39,7 +37,7 @@ public class Demo004SimpleRoundRobinLoadBalance implements LoadBalance {
      */
     private static int index;
 
-    private static AtomicInteger atomicIndex = new AtomicInteger();
+    private final static AtomicInteger ATOMIC_INDEX = new AtomicInteger();
 
     @Override
     public String getServer() {
@@ -73,8 +71,8 @@ public class Demo004SimpleRoundRobinLoadBalance implements LoadBalance {
     private String unSafe2() {
         List<String> ipList = ServerInfo.IP_LIST;
 
-        if (atomicIndex.get() >= ipList.size()) {
-            atomicIndex.set(0);
+        if (ATOMIC_INDEX.get() >= ipList.size()) {
+            ATOMIC_INDEX.set(0);
         }
 
         // 模拟线程不安全
@@ -85,7 +83,7 @@ public class Demo004SimpleRoundRobinLoadBalance implements LoadBalance {
         }
 
         // 此处会出现下标越界的情况，因为有的线程进来的时候，get还没有超过list下标，但是执行到这里的时候，别的线程也在操作的时候，将atomicIndex增加超过list长度了。
-        String ip = ipList.get(atomicIndex.getAndIncrement());
+        String ip = ipList.get(ATOMIC_INDEX.getAndIncrement());
 
         return ip;
     }
