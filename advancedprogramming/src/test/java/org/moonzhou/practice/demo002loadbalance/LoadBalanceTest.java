@@ -265,4 +265,26 @@ public class LoadBalanceTest {
         }
     }
 
+    @Test
+    public void testHashLoadBalance() {
+        LoadBalance loadBalance1 = new Demo010HashLoadBalance("哈哈哈");
+        System.out.println("1-1: " + loadBalance1.getServer());
+        System.out.println("1-2: " + loadBalance1.getServer());
+        System.out.println("1-3: " + new Demo010HashLoadBalance("哈哈哈").getServer());
+
+        LoadBalance loadBalance2 = new Demo010HashLoadBalance("aaabbbccc");
+        System.out.println("2-1: " + loadBalance2.getServer());
+        System.out.println("2-2: " + loadBalance2.getServer());
+        System.out.println("2-3: " + new Demo010HashLoadBalance("aaabbbccc").getServer());
+
+        LoadBalance loadBalance3 = new Demo010HashLoadBalance("123123");
+        System.out.println("3-1: " + loadBalance3.getServer());
+        System.out.println("3-2: " + loadBalance3.getServer());
+        System.out.println("3-2: " + new Demo010HashLoadBalance("123123").getServer());
+
+        LoadBalance loadBalance4 = new Demo010HashLoadBalance("!!!!");
+        System.out.println("4-1: " + loadBalance4.getServer());
+        System.out.println("4-2: " + loadBalance4.getServer());
+        System.out.println("4-3: " + new Demo010HashLoadBalance("!!!!").getServer());
+    }
 }
