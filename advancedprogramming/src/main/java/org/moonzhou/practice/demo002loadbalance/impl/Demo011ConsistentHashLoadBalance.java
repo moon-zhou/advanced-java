@@ -34,11 +34,11 @@ import java.util.TreeMap;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class Demo010HashLoadBalance implements LoadBalance {
+public class Demo011ConsistentHashLoadBalance implements LoadBalance {
 
     String client;
 
-    public Demo010HashLoadBalance(String client) {
+    public Demo011ConsistentHashLoadBalance(String client) {
         this.client = client;
     }
 

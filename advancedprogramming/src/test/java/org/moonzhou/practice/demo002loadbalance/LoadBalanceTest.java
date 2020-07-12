@@ -7,8 +7,6 @@ import org.moonzhou.practice.demo002loadbalance.impl.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.LongAdder;
 
 /**
  * 负载均衡算法测试
@@ -266,25 +264,48 @@ public class LoadBalanceTest {
     }
 
     @Test
-    public void testHashLoadBalance() {
-        LoadBalance loadBalance1 = new Demo010HashLoadBalance("哈哈哈");
+    public void testSimpleHashLoadBalance() {
+        LoadBalance loadBalance1 = new Demo010SimpleHashLoadBalance("哈哈哈");
         System.out.println("1-1: " + loadBalance1.getServer());
         System.out.println("1-2: " + loadBalance1.getServer());
-        System.out.println("1-3: " + new Demo010HashLoadBalance("哈哈哈").getServer());
+        System.out.println("1-3: " + new Demo010SimpleHashLoadBalance("哈哈哈").getServer());
 
-        LoadBalance loadBalance2 = new Demo010HashLoadBalance("aaabbbccc");
+        LoadBalance loadBalance2 = new Demo010SimpleHashLoadBalance("aaabbbccc");
         System.out.println("2-1: " + loadBalance2.getServer());
         System.out.println("2-2: " + loadBalance2.getServer());
-        System.out.println("2-3: " + new Demo010HashLoadBalance("aaabbbccc").getServer());
+        System.out.println("2-3: " + new Demo010SimpleHashLoadBalance("aaabbbccc").getServer());
 
-        LoadBalance loadBalance3 = new Demo010HashLoadBalance("123123");
+        LoadBalance loadBalance3 = new Demo010SimpleHashLoadBalance("123123");
         System.out.println("3-1: " + loadBalance3.getServer());
         System.out.println("3-2: " + loadBalance3.getServer());
-        System.out.println("3-2: " + new Demo010HashLoadBalance("123123").getServer());
+        System.out.println("3-2: " + new Demo010SimpleHashLoadBalance("123123").getServer());
 
-        LoadBalance loadBalance4 = new Demo010HashLoadBalance("!!!!");
+        LoadBalance loadBalance4 = new Demo010SimpleHashLoadBalance("!!!!");
         System.out.println("4-1: " + loadBalance4.getServer());
         System.out.println("4-2: " + loadBalance4.getServer());
-        System.out.println("4-3: " + new Demo010HashLoadBalance("!!!!").getServer());
+        System.out.println("4-3: " + new Demo010SimpleHashLoadBalance("!!!!").getServer());
+    }
+
+    @Test
+    public void testConsistentHashLoadBalance() {
+        LoadBalance loadBalance1 = new Demo011ConsistentHashLoadBalance("哈哈哈");
+        System.out.println("1-1: " + loadBalance1.getServer());
+        System.out.println("1-2: " + loadBalance1.getServer());
+        System.out.println("1-3: " + new Demo011ConsistentHashLoadBalance("哈哈哈").getServer());
+
+        LoadBalance loadBalance2 = new Demo011ConsistentHashLoadBalance("aaabbbccc");
+        System.out.println("2-1: " + loadBalance2.getServer());
+        System.out.println("2-2: " + loadBalance2.getServer());
+        System.out.println("2-3: " + new Demo011ConsistentHashLoadBalance("aaabbbccc").getServer());
+
+        LoadBalance loadBalance3 = new Demo011ConsistentHashLoadBalance("123123");
+        System.out.println("3-1: " + loadBalance3.getServer());
+        System.out.println("3-2: " + loadBalance3.getServer());
+        System.out.println("3-2: " + new Demo011ConsistentHashLoadBalance("123123").getServer());
+
+        LoadBalance loadBalance4 = new Demo011ConsistentHashLoadBalance("!!!!");
+        System.out.println("4-1: " + loadBalance4.getServer());
+        System.out.println("4-2: " + loadBalance4.getServer());
+        System.out.println("4-3: " + new Demo011ConsistentHashLoadBalance("!!!!").getServer());
     }
 }
