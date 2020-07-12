@@ -67,4 +67,15 @@ public class ServerInfo {
         IP_WEIGHTLIST_LITTLE.put("192.168.0.102", 3);
     }
 
+
+    /**
+     * 带权重的ip配置，用于平滑轮询算法测试
+     */
+    public static Map<String, Integer> IP_WEIGHTLIST_SMOOTH_ROUND_ROBIN = new LinkedHashMap<>();
+
+    static {
+        IP_WEIGHTLIST_SMOOTH_ROUND_ROBIN.put("A", 5);
+        IP_WEIGHTLIST_SMOOTH_ROUND_ROBIN.put("B", 1);
+        IP_WEIGHTLIST_SMOOTH_ROUND_ROBIN.put("C", 1);
+    }
 }

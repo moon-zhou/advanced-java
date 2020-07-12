@@ -22,6 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 功能描述:线程安全的加权轮询算法<br>
  *     偏移量方式
+ *     劣势：特殊的权重下，加权轮询调度会生成不均匀的实例序列。
  *
  * @author moon-zhou
  * @see [相关类/方法]（可选）

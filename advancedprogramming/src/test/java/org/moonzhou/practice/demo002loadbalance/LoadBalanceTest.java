@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 
 /**
  * 负载均衡算法测试
@@ -241,6 +242,27 @@ public class LoadBalanceTest {
         }
 
         System.out.println("end......");
+    }
+
+    /**
+     * 测试平滑轮询算法
+     */
+    @Test
+    public void testWeightSmoothRoundRobinLoadBalance() {
+        LoadBalance loadBalance = new Demo009WeightSmoothRoundRobinLoadBalance();
+
+        Map<String, Integer> ipWeightList = ServerInfo.IP_WEIGHTLIST_SMOOTH_ROUND_ROBIN;
+        int weightSum = ipWeightList.values().stream().mapToInt(a -> a).sum();
+
+        int loopTimes = weightSum * 6;
+
+        for (int i = 0; i < loopTimes; i++) {
+            System.out.println(loadBalance.getServer());
+
+            if ((i + 1) % weightSum == 0) {
+                System.out.println("==================");
+            }
+        }
     }
 
 }
