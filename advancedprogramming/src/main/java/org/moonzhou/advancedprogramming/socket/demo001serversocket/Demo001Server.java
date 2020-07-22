@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.socket.demo001;
+package org.moonzhou.advancedprogramming.socket.demo001serversocket;
 
 import java.io.*;
 import java.net.InetAddress;
