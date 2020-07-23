@@ -38,6 +38,7 @@ public class Demo002SimpleSocketClientTest {
              *
              * 控制台输入的数据被读取之后，会去掉\r\n，
              * 而ServerSocket的readLine()方法在进行读取一行时，只有遇到回车(\r)或者换行符(\n)才会返回读取结果，必须要有\r\n
+             * readLine()返回的读取内容中并不包含换行符或者回车符
              */
             bw.write(sendMessage + "\r\n");
             bw.flush();
