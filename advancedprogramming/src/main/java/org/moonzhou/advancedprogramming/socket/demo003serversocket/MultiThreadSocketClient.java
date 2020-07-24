@@ -4,6 +4,10 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
+/**
+ * 多线程BIO测试类，手动执行多个（连向同一个server，但是不同的端口）
+ * 或者直接使用nc开启多个命令对话框来连接测试
+ */
 public class MultiThreadSocketClient {
 
     /**

@@ -16,15 +16,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 功能描述: 手动多线程，支持多客户端连接<br>
+ * 等待连接和等待接收消息是独立的线程，但依然是BIO
  *
  * @author moon-zhou
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
 public class MultiThreadServerSocket {
+
+    /**
+     * 退出监听关键字
+     */
+    private static final String EXIT_KEY_WORD = "BYE";
 
     public static void main(String[] args) {
         int port = genPort(args);
@@ -34,9 +41,12 @@ public class MultiThreadServerSocket {
 
         try {
             server = new ServerSocket(port);
-            System.out.println("server started!");
+            System.out.println("server started, waiting to be connected...!");
             while (true) {
+
                 Socket socket = server.accept();
+
+                System.out.println("Socket connected by: " + socket);
 
                 service.execute(new ClientConnHandler(socket));
             }
@@ -71,13 +81,18 @@ public class MultiThreadServerSocket {
                 writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
                 String readMessage = null;
                 while (true) {
-                    System.out.println("server reading... ");
-                    if ((readMessage = reader.readLine()) == null) {
+                    System.out.println(socket + " waiting reading...");
+
+                    readMessage = reader.readLine();
+
+                    // 此退出方式不容易模拟 TODO 后续可以研究下
+//                    if ((readMessage = reader.readLine()) == null) {
+                    if (EXIT_KEY_WORD.equals(readMessage)) {
                         System.out.println(Thread.currentThread().getName() + "is end.");
                         break;
                     }
-                    System.out.println("server recive: " + readMessage);
-                    writer.println("server recive and return: " + readMessage);
+                    System.out.println(socket + " receive: " + readMessage);
+                    writer.println("server receive and return: " + readMessage);
                     writer.flush();
                 }
             } catch (Exception e) {
