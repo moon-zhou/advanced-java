@@ -4,6 +4,7 @@
 1. 简单的`ServerSocket`示例：`org.moonzhou.advancedprogramming.socket.demo001serversocket`
 1. 服务端通过`ServerSocket`单线程持续获取客户端输入，客户端`Socket`连接上服务端，通过控制台输入信息，发送给服务端。示例：`org.moonzhou.advancedprogramming.socket.demo002serversocket`
 1. 多线程服务端`ServerSocket`接收多线程客户端`Socket`连接。示例：`org.moonzhou.advancedprogramming.socket.demo003serversocket`
+    > 服务端启动后，模拟多客户端连接，可以打开多个命令对话框，使用nc命令进行连接，或者手动启动多个client
 
 #### 小工具
 起初看到Linux可以通过`nc`命令直接连接，没有确认windows下是否支持该命令，所以直接写了Client客户端连接的代码。
