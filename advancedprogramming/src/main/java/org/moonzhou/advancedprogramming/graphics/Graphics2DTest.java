@@ -31,7 +31,7 @@ public class Graphics2DTest {
             //g2d.setPaint(new Color(0,0,0));  
             g2d.setColor(Color.red);
 //            g2d.clearRect(0, 0, width, height);
-            Font font = new Font("宋体", Font.PLAIN, 16);
+            Font font = new Font("宋体", Font.PLAIN, width / 300 * 17);
             g2d.setFont(font);
             // 抗锯齿
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -42,8 +42,8 @@ public class Graphics2DTest {
             FontMetrics fm = label.getFontMetrics(font);
             // 计算文字长度，计算居中的x点坐标
 //            FontMetrics fm = g2d.getFontMetrics(font);
-            int textWidth = fm.stringWidth(text) * 4;
-            int textHeight = fm.getHeight() * 4;
+            int textWidth = fm.stringWidth(text) + fm.stringWidth(text) / 10 * 2;
+            int textHeight = fm.getHeight() * 2;
 
 
             int cols = width / textWidth;
@@ -60,7 +60,7 @@ public class Graphics2DTest {
 //                g2d.rotate(Math.toRadians(-45), (double) textWidth, (double) textHeight);
                 for (int i = 0; i < cols; i++) {
                     // 表示这段文字在图片上的位置(x,y) .第一个是你设置的内容。
-                    g2d.drawString(text, (i + 1) * textWidth, j * textHeight);
+                    g2d.drawString(text, i * textWidth, j * textHeight);
                 }
             }
 
@@ -68,7 +68,7 @@ public class Graphics2DTest {
             g2d.dispose();
 
             // 保存文件      
-            ImageIO.write(image, "jpg", new File("E:/test/test6.png"));
+            ImageIO.write(image, "jpg", new File("E:/test/test8.png"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
