@@ -1,7 +1,9 @@
 package org.moonzhou.ftputils;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.IOException;
@@ -22,8 +24,8 @@ public class FtpTest {
         FTPClient ftpClient = new FTPClient();
         InputStream input = null;
         try {
-            ftpClient.connect("xxx", 21);
-            boolean loginResult = ftpClient.login("eppsmps/memberattr_private/attrData", "gz15030458");
+            ftpClient.connect("10.19.38.5", 21);
+            boolean loginResult = ftpClient.login("test", "1qaz@WSX");
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
             int reply = ftpClient.getReplyCode();
@@ -32,9 +34,11 @@ public class FtpTest {
                 return;
             }
 
-            input = ftpClient.retrieveFileStream("/attrdata/userRealInfoHandle/123.jpg");
+            input = ftpClient.retrieveFileStream("test.png");
 
-            ftpClient.logout();
+            FTPFile[] ftpFiles = ftpClient.listFiles();
+
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -46,7 +50,17 @@ public class FtpTest {
                 e.printStackTrace();
             }
 
+            try {
+                ftpClient.logout();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+        /*String waterMarkContent = "sn17010111";
+        byte[] data = ImageAddWaterMarkUtil.addWatermarkTransByte(input, null, waterMarkContent);
+
+        IOUtils.write(data, resp.getOutputStream());*/
 
     }
 }
