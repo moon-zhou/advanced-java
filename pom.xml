@@ -14,6 +14,7 @@
         <module>advancedprogramming</module>
         <module>designpatterns</module>
         <module>common-utils</module>
+        <module>jvmlearning</module>
     </modules>
 
     <name>advanced-java</name>
