@@ -57,7 +57,7 @@ public class FtpTest {
             }
         }
 
-        /*String waterMarkContent = "sn17010111";
+        /*String waterMarkContent = "水印";
         byte[] data = ImageAddWaterMarkUtil.addWatermarkTransByte(input, null, waterMarkContent);
 
         IOUtils.write(data, resp.getOutputStream());*/
