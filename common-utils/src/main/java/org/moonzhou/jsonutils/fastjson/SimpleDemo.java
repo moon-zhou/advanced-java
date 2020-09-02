@@ -119,6 +119,19 @@ class AuditLog {
     public AuditLog() {
     }
 
+    /**
+     * 如果没有get/set方法，fastjson里JSON.toJSONString不会对其进行输出
+     * 类似注解<code>@JSONField(serialize = false)</code>
+     * @return
+     */
+    public String getSystem() {
+        return system;
+    }
+
+    public void setSystem(String system) {
+        this.system = system;
+    }
+
     public String getUserNo() {
         return userNo;
     }
