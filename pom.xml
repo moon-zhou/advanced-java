@@ -15,6 +15,7 @@
         <module>designpatterns</module>
         <module>common-utils</module>
         <module>jvmlearning</module>
+        <module>consistent-hash-algorithm</module>
     </modules>
 
     <name>advanced-java</name>
