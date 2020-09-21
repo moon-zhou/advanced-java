@@ -25,5 +25,10 @@ public class StringSub {
         String domain = "https://xgpresfsso.cnsuning.com/ids/login";
 
         System.out.println(StringUtils.substringBefore(domain, "/login"));
+
+        String domain2 = "https://paysso.suning.com/ids/login";
+        System.out.println(StringUtils.substringBefore(domain2, "/ids/login"));
+        System.out.println(StringUtils.substringBefore(domain2, "ids/login"));
+        System.out.println(StringUtils.substringBefore(domain2, "/ids"));
     }
 }
