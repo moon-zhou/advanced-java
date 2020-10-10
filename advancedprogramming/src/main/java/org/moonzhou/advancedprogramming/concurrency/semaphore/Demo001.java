@@ -11,9 +11,7 @@
  */
 package org.moonzhou.advancedprogramming.concurrency.semaphore;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
 /**
  * 功能描述: 信号量示例<br>
@@ -36,18 +34,45 @@ public class Demo001 {
     // 控制线程并发数为10，即使有30个线程
     private static Semaphore semaphore = new Semaphore(10);
 
+    private static CountDownLatch cdl = new CountDownLatch(30);
+
     public static void main(String[] args) {
         for (int i = 0; i < THREAD_COUNT; i++) {
+            final int batchShow = i;
+
             threadPool.execute(() -> {
                 try {
                     semaphore.acquire();
+
+                    // 为方便查看输出信息，每10条（一批）打一行分隔符
+                    if (batchShow % 10 == 0) {
+                        System.out.println("===============");
+                    }
+
                     System.out.println(Thread.currentThread().getName() + ":" + "save data");
+
+                    // 模拟耗时处理
+                    TimeUnit.SECONDS.sleep(5);
+
                     semaphore.release();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } finally {
+                    cdl.countDown();
                 }
 
             });
         }
+
+        try {
+            cdl.await();
+
+            System.out.println("\n" + "it is end, shutdown thread pool.");
+
+            threadPool.shutdown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
