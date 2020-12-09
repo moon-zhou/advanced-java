@@ -9,7 +9,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名    修改时间    版本号       描述
  */
-package org.moonzhou.dailyprogramming.xml;
+package org.moonzhou.dailyprogramming;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -30,7 +30,7 @@ public class IdNoAgeTest {
 
         System.out.println("----------------");
 
-//        testMore();
+        testMore();
 
         System.out.println("----------------");
 
