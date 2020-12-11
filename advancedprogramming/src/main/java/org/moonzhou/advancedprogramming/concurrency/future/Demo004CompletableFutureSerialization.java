@@ -17,7 +17,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * 功能描述: {@link CompletableFuture}的简单示例<br>
@@ -41,9 +43,11 @@ public class Demo004CompletableFutureSerialization {
 
 //        thenComposeTest();
 
-        completableAsyncDiff();
+//        completableAsyncDiff();
 
 //        whenCompleteTest();
+
+        handleTest();
     }
 
     /**
@@ -134,17 +138,35 @@ public class Demo004CompletableFutureSerialization {
 
     /**
      * 带有Async后缀使用的区别
-     * 带有Async的方法，执行时使用线程池的线程，而不带Async使用主线程进行执行？？有疑问
+     * TODO 带有Async的方法，执行时使用线程池的线程，而不带Async使用主线程进行执行？？有疑问，示例没有演示出来
      */
     private static void completableAsyncDiff() {
         System.out.println("main thread name: " + Thread.currentThread().getName());
 
         CompletableFuture<Void> runAsync = CompletableFuture.runAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("runAsync thread name: " + Thread.currentThread().getName());
         }).thenRun(() -> {
-            // 这个有时候是主线程执行，有时候是线程池执行？？
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            // 这个有时候是主线程执行，有时候是线程池执行？？加上sleep之后全部都是线程池执行
             System.out.println("thenRun thread name: " + Thread.currentThread().getName());
         }).thenRunAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("thenRunAsync thread name: " + Thread.currentThread().getName());
         });
 
@@ -152,11 +174,29 @@ public class Demo004CompletableFutureSerialization {
         System.out.println(runAsync.join());
 
         CompletableFuture<Void> run = CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("runAsync thread name: " + Thread.currentThread().getName());
             return "hi";
         }).thenAccept(data -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("thenAccept thread name: " + Thread.currentThread().getName());
         }).thenAcceptAsync(data -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("thenRunAsync thread name: " + Thread.currentThread().getName());
         });
 
@@ -204,6 +244,39 @@ public class Demo004CompletableFutureSerialization {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * handle 是执行任务完成时对结果的处理。
+     * handle 方法和 thenApply 方法处理方式基本一样。不同的是 handle 是在任务完成后再执行，还可以处理异常的任务。
+     * thenApply 只可以执行正常的任务，任务出现异常则不执行 thenApply 方法。
+     * whenComplete也是执行特定的action但也是不关注前面执行的结果
+     */
+    private static void handleTest() {
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(new Supplier<Integer>() {
+
+            @Override
+            public Integer get() {
+                // 放开注释，可以验证处理异常
+//                int i = 10 / 0;
+                int i = new Random().nextInt(10);
+                System.out.println(i);
+                return i;
+            }
+        }).handle(new BiFunction<Integer, Throwable, Integer>() {
+            @Override
+            public Integer apply(Integer param, Throwable throwable) {
+                int result = -1;
+                if (throwable == null) {
+                    result = param * 2;
+                } else {
+                    System.out.println(throwable.getMessage());
+                }
+                return result;
+            }
+        });
+
+        System.out.println(future.join());
     }
 
 }
