@@ -24,14 +24,14 @@ import java.util.concurrent.*;
 public class Demo003CompletableFutureException {
 
     public static void main(String[] args) {
-        CompletableUncheckedException();
+        completableUncheckedException();
 
         System.out.println("-------------------");
 
-        CompletableCheckedException();
+        completableCheckedException();
     }
 
-    private static void CompletableUncheckedException() {
+    private static void completableUncheckedException() {
         CompletableFuture<Void> runAsync = CompletableFuture.runAsync(() -> {
             System.out.println("it's runnable implementation.");
             try {
@@ -73,7 +73,7 @@ public class Demo003CompletableFutureException {
 
     }
 
-    private static void CompletableCheckedException() {
+    private static void completableCheckedException() {
         CompletableFuture<Void> runAsync = CompletableFuture.runAsync(() -> {
             System.out.println("it's runnable implementation.");
             try {
