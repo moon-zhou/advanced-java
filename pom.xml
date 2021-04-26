@@ -27,7 +27,7 @@
         <commons-math3.version>3.6.1</commons-math3.version>
         <guava.version>29.0-jre</guava.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <jackson-databind.version>2.11.0</jackson-databind.version>
         <jackson-core.version>2.11.0</jackson-core.version>
         <jackson-annotations.version>2.11.0</jackson-annotations.version>
