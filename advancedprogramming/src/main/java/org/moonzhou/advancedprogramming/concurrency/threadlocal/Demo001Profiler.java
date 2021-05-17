@@ -16,18 +16,18 @@ public class Demo001Profiler {
     private static final ThreadLocal<Long> TIME_THREADLOCAL = new ThreadLocal<Long>() {
         @Override
         protected Long initialValue() {
-            System.out.println("init value...");
+            System.out.println(Thread.currentThread() + ":    " + "init value...");
             return System.currentTimeMillis();
         }
     };
 
     public static final void begin() {
-        System.out.println("begin...");
+        System.out.println(Thread.currentThread() + ":    " + "begin...");
         TIME_THREADLOCAL.set(System.currentTimeMillis());
     }
 
     public static final long end() {
-        System.out.println("end...");
+        System.out.println(Thread.currentThread() + ":    " + "end...");
         return System.currentTimeMillis() - TIME_THREADLOCAL.get();
     }
 
@@ -52,7 +52,7 @@ public class Demo001Profiler {
         new Thread(() -> {
             Demo001Profiler.begin();
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

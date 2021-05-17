@@ -49,6 +49,15 @@ public class Demo006UncaughtException {
         });
         thread.setUncaughtExceptionHandler(new MyExceptionHandler());
         thread.start();
+
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // 不影响主线程执行，此处依然能够执行到
+        System.out.println("main end...");
     }
 
     /**
@@ -118,6 +127,7 @@ public class Demo006UncaughtException {
             pool.shutdown();
         }
 
+        // 影响主线程，不会执行
         Thread.sleep(5000);
         System.out.println("finished!");
 
