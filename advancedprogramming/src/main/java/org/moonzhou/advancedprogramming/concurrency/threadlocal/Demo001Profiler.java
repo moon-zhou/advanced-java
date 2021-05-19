@@ -22,12 +22,12 @@ public class Demo001Profiler {
     };
 
     public static final void begin() {
-        System.out.println(Thread.currentThread() + ":    " + "begin...");
+        System.out.println(Thread.currentThread() + ":    " + "begin..." + "    threadlocal:" + TIME_THREADLOCAL);
         TIME_THREADLOCAL.set(System.currentTimeMillis());
     }
 
     public static final long end() {
-        System.out.println(Thread.currentThread() + ":    " + "end...");
+        System.out.println(Thread.currentThread() + ":    " + "end..." + "    threadlocal:" + TIME_THREADLOCAL);
         return System.currentTimeMillis() - TIME_THREADLOCAL.get();
     }
 
