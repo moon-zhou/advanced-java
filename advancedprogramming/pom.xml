@@ -66,6 +66,13 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.11.0</version>
         </dependency>
+
+        <!-- 阿里开源的ThreadLocal在线程池下传递值 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>transmittable-thread-local</artifactId>
+            <version>2.12.1</version>
+        </dependency>
     </dependencies>
 
 </project>
