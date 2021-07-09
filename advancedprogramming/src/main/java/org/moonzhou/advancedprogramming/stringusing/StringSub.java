@@ -22,11 +22,11 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class StringSub {
     public static void main(String[] args) {
-        String domain = "https://xgpresfsso.cnsuning.com/ids/login";
+        String domain = "https://xgpresfsso.cnxxxxxx.com/ids/login";
 
         System.out.println(StringUtils.substringBefore(domain, "/login"));
 
-        String domain2 = "https://paysso.suning.com/ids/login";
+        String domain2 = "https://paysso.xxxxxx.com/ids/login";
         System.out.println(StringUtils.substringBefore(domain2, "/ids/login"));
         System.out.println(StringUtils.substringBefore(domain2, "ids/login"));
         System.out.println(StringUtils.substringBefore(domain2, "/ids"));

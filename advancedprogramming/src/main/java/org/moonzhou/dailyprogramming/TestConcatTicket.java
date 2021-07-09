@@ -31,8 +31,8 @@ public class TestConcatTicket {
 
     public static void main(String[] args) {
 
-        String url = "https://sffsxgpre.cnsuning.com/sffs/teamFund/app.htm#/share?miniClickID=snjr_adid_1622615437341&emjsToken=162261543921381734ffcab00b71e4fd080b12425d6756549&verifyInfoType=12&pctoken2=TWy92o179cb6ab020QSih4aa";
-        String url2 = "https://sffsxgpre.cnsuning.com/sffs/teamFund/app.htm?miniClickID=snjr_adid_1622615437341&emjsToken=162261543921381734ffcab00b71e4fd080b12425d6756549&verifyInfoType=12&pctoken2=TWy92o179cb6ab020QSih4aa#/share";
+        String url = "https://sffsxgpre.cnxxxxxx.com/sffs/teamFund/app.htm#/share?miniClickID=snjr_adid_1622615437341&emjsToken=162261543921381734ffcab00b71e4fd080b12425d6756549&verifyInfoType=12&pctoken2=TWy92o179cb6ab020QSih4aa";
+        String url2 = "https://sffsxgpre.cnxxxxxx.com/sffs/teamFund/app.htm?miniClickID=snjr_adid_1622615437341&emjsToken=162261543921381734ffcab00b71e4fd080b12425d6756549&verifyInfoType=12&pctoken2=TWy92o179cb6ab020QSih4aa#/share";
         Map<String, String> parameters = new HashMap<>();
         parameters.put("ticket", "210*ST5BA739894D06CE31F10A47446A37A28A");
         getRedirectResponse(url, parameters);
