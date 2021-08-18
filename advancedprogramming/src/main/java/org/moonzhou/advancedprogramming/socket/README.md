@@ -19,7 +19,7 @@
     * 启动服务端`org.moonzhou.advancedprogramming.socket.demo002serversocket.Demo001SimpleServerSocket`，使用命令验证`nc 127.0.0.1 9999`，可以正常发送返回（一行发送，一行返回）
         ```
         λ nc 127.0.0.1 9999
-        123                
+        123                 
         123                
         123                
         123                
