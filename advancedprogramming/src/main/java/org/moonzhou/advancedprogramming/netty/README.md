@@ -19,3 +19,20 @@
     每个 NioChannel 只会绑定在唯一的 NioEventLoop 上
     每个 NioChannel 都绑定有一个自己的 ChannelPipeline
    ```
+
+### demo002
+采用的是 [官方示例](https://netty.io/wiki/user-guide-for-4.x.html) ，经过了些微的变动 [版本](https://blog.csdn.net/wocjy/article/details/78661464) 。
+官方认为 `Hello World` 不是最简单的协议示例，而是 [DISCARD](https://tools.ietf.org/html/rfc863) 。
+
+#### 测试步骤
+1. 启动服务端：`org.moonzhou.advancedprogramming.netty.demo002.DiscardServer`
+2. 通过终端，使用`netcat`连接： `nc localhost 8088`
+1. 通过终端，使用`telnet`连接： `telnet localhost 8088`。需要注意的是windows下默认是关闭`telnet`，需要打开： `控制面板-程序-启动或关闭Windows功能-telnet`
+   ![windows telnet on](./img/windows-telnet-on.png)
+
+#### 示例说明
+1. 同demo001类似，服务端抽象两组线程池，boss(parentGroup)和worker(childGroup)。
+1. boss的Channel配置，worker的Channel配置。
+1. `ServerBootstrap`正常的配置(channel相关，端口等)启动和关闭。
+1. 运行结果就是运行的控制台输出了客户端输入的内容。
+
