@@ -31,8 +31,21 @@
    ![windows telnet on](./img/windows-telnet-on.png)
 
 #### 示例说明
-1. 同demo001类似，服务端抽象两组线程池，boss(parentGroup)和worker(childGroup)。
+1. 同`demo001`类似，服务端抽象两组线程池，boss(parentGroup)和worker(childGroup)。
 1. boss的Channel配置，worker的Channel配置。
 1. `ServerBootstrap`正常的配置(channel相关，端口等)启动和关闭。
 1. 运行结果就是运行的控制台输出了客户端输入的内容。
+
+### demo003
+demo002中**DISCARD**只是接收了消息，但是没有任何的返回。该示例就是[ECHO](https://tools.ietf.org/html/rfc862)的一种实现。
+[官方示例源码](https://netty.io/4.1/xref/io/netty/example/echo/package-summary.html)，初始化部分有些许微调。
+
+#### 测试步骤
+同`demo002`的测试步骤
+
+#### 示例说明
+1. 整体过程同`demo001`和`demo002`类似
+1. 本示例的核心是`ECHO`的实现，即直接返回用户输入的内容到终端即可，主要是`ctx.write(in);`和`ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)`。
+1. `@Sharable` 标识这类的实例之间可以在 `channel` 里面共享
+
 
