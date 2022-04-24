@@ -1,5 +1,6 @@
 package org.moonzhou.dailyprogramming.valuerefrence;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 
 /**
@@ -30,10 +31,29 @@ public class Demo002String {
     }
 
     private static void change(String hello) {
+
+        // String也可以通过反射，将值进行修改
+        try {
+            Field value = String.class.getDeclaredField("value");
+            value.setAccessible(true);
+            char[] values = (char[]) value.get(hello);
+            values[5] = ',';
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println();
+        System.out.println(String.format(CHANGE_ADDRESS_FORMAT, System.identityHashCode(hello)));
+        System.out.println(String.format(CHANGE_OUT_FORMAT, hello));
+
         // 只是改变了形参的值
         hello = hello.substring(6);
 
         System.out.println(String.format(CHANGE_ADDRESS_FORMAT, System.identityHashCode(hello)));
         System.out.println(String.format(CHANGE_OUT_FORMAT, hello));
+        System.out.println();
+
     }
 }
