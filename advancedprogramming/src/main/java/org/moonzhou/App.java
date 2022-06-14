@@ -19,6 +19,7 @@ public class App
 
         LocalDateTime currentTime = LocalDateTime.now();
         System.out.println("当前时间: " + currentTime);
+        System.out.println("当前时间: " + currentTime.toString());
 
         LocalDate date1 = currentTime.toLocalDate();
         System.out.println("date1: " + date1);
