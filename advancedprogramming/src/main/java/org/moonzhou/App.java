@@ -24,5 +24,6 @@ public class App
         LocalDate date1 = currentTime.toLocalDate();
         System.out.println("date1: " + date1);
 
+        System.out.println(LocalDate.now().toString());
     }
 }
