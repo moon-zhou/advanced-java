@@ -21,6 +21,7 @@ public class Demo004 {
         }).collect(Collectors.joining(","));
 
         System.out.println(operator);
+        System.out.println(String.join(",", currentUserList));
     }
 
     private static String change(String param) {
