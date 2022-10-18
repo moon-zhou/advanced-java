@@ -23,6 +23,8 @@ public class LocalDateTimeTest {
         System.out.println(dateFormatter2.format(LocalDateTime.now()));
 
         System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/yyyy")));
+        System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd 00:00:00")));
 
         System.out.println(LocalDate.now().getYear());
     }
