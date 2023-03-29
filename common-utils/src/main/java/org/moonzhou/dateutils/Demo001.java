@@ -10,6 +10,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -25,6 +27,8 @@ public class Demo001 {
         initialMethod();
 
         utilsMethod();
+
+        testSimpleDateFormat();
 
         dateUtilComputeMethod();
 
@@ -70,6 +74,22 @@ public class Demo001 {
             e.printStackTrace();
         }
 
+    }
+
+    private static void testSimpleDateFormat() {
+        System.out.println();
+        Date now = new Date();
+        String chinaNow = new SimpleDateFormat("HH:mm", Locale.CHINA).format(now);
+        String canadaNow = new SimpleDateFormat("HH:mm", Locale.CANADA).format(now);
+
+        System.out.println(chinaNow);
+        System.out.println(canadaNow);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        formatter.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+        System.out.println(formatter.format(now));
+        formatter.setTimeZone(TimeZone.getTimeZone("GMT+9:00"));
+        System.out.println(formatter.format(now));
     }
 
     private static void dateUtilComputeMethod() {

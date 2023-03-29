@@ -123,6 +123,11 @@ public class Java8Time {
         System.out.println(dateOfBirth.isLeapYear());
     }
 
+    public static void testLocalDateTime2() {
+        String now = LocalDateTime.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println(now);
+    }
+
     public static void testZonedDateTime() {
         // 即带有时区的date-time 存储纳秒、时区和时差(避免与本地date-time歧义)。
         // API和LocalDateTime类似，只是多了时差(如2013-12-20T10:35:50.711+08:00[Asia/Shanghai])
@@ -174,6 +179,9 @@ public class Java8Time {
         System.out.println();
 
         testLocalDateTime();
+        System.out.println();
+
+        testLocalDateTime2();
         System.out.println();
 
         testZonedDateTime();
