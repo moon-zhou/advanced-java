@@ -5,8 +5,9 @@
 | 模块名称                | 说明                   | JDK Version |
 |---------------------|----------------------|-------------|
 | advancedprogramming | java demo，日常编码示例及新特性 | 1.8         |
-| agentdemo           | java agent demo      |      1.8        |
-| agentdemo-test      | java agent demo      |      1.8        |
-| common-utils        | 通用的工具类               |       1.8       |
-| designpatterns      | Java设计模式             |     1.8         |
-| jvmlearning         | JVM学习相关示例代码          |      1.8        |
+| agentdemo           | java agent demo      | 1.8         |
+| agentdemo-test      | java agent demo      | 1.8         |
+| common-utils        | 通用的工具类               | 1.8         |
+| designpatterns      | Java设计模式             | 1.8         |
+| java-algorithm      | Java 算法              | 17          |
+| jvmlearning         | JVM学习相关示例代码          | 1.8         |
