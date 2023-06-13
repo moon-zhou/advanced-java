@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.stream;
+package org.moonzhou.dailyprogramming.lambda.stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;

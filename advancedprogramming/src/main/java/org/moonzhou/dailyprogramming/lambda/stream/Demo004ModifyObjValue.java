@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.stream;
+package org.moonzhou.dailyprogramming.lambda.stream;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

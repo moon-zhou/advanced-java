@@ -1,4 +1,4 @@
-package org.moonzhou.advancedprogramming.stream;
+package org.moonzhou.dailyprogramming.lambda.stream;
 
 import lombok.extern.slf4j.Slf4j;
 
