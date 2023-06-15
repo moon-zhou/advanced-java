@@ -3,8 +3,6 @@ package org.moonzhou.dailyprogramming.lambda.snippet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.moonzhou.advancedprogramming.stream.Demo004ModifyObjValue;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
