@@ -3,6 +3,7 @@ package org.moonzhou.dailyprogramming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class BizFilter {
         userList.add(new User("MX016603", "B3"));
         userList.add(new User("MX005671", "C1"));
         userList.add(new User("MX016722", "BC"));
+        userList.add(new User("MX012345", null));
 
         userList.forEach(System.out::println);
         System.out.println();
@@ -39,10 +41,22 @@ public class BizFilter {
         userOldList.forEach(System.out::println);
         System.out.println();
 
-        List<User> userNewList = userList.stream().filter(user -> !(user.getUserId().startsWith("MX") && user.getSubgroup().startsWith("B"))
+        List<User> userNewList = userList.stream().filter(user -> !(user.getUserId().startsWith("MX") && StringUtils.startsWith(user.getSubgroup(), "B"))
                 && !user.getUserId().startsWith("MF")).collect(Collectors.toList());
         userNewList.forEach(System.out::println);
         System.out.println();
+
+        List<User> userNewList2 = userList.stream().filter(user -> !((user.getUserId().startsWith("MX") && null == user.getSubgroup())
+                || (user.getUserId().startsWith("MX") && null != user.getSubgroup() && user.getSubgroup().startsWith("B")))
+                && !user.getUserId().startsWith("MF")).collect(Collectors.toList());
+        userNewList2.forEach(System.out::println);
+        System.out.println();
+
+        System.out.println(StringUtils.startsWith(null, "B"));
+        System.out.println(StringUtils.startsWith("A", null));
+        System.out.println(StringUtils.startsWith(null, null));
+        System.out.println(StringUtils.startsWith("A", "AB"));
+        System.out.println(StringUtils.startsWith("AB", "A"));
     }
 
     @NoArgsConstructor
