@@ -1,4 +1,4 @@
-package org.moonzhou.dailyprogramming;
+package org.moonzhou.advancedprogramming.basis.list;
 
 import java.util.ArrayList;
 import java.util.Arrays;

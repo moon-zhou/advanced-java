@@ -9,7 +9,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名    修改时间    版本号       描述
  */
-package org.moonzhou.dailyprogramming;
+package org.moonzhou.advancedprogramming.basis.map;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.moonzhou.dailyprogramming;
+package org.moonzhou.advancedprogramming.basis.string;
 
 import java.lang.invoke.SwitchPoint;
 import java.util.Arrays;
