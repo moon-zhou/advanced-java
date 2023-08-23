@@ -12,8 +12,13 @@ public class Demo002 {
     public static void main(String[] args) {
         LocalDate now = LocalDate.now();
 
-        LocalDate yesterday = LocalDate.parse("2023-08-21");
+        // LocalDate yesterday = LocalDate.parse("2023-08-21");
+        LocalDate yesterday = LocalDate.parse("2023-08-19");
 
         System.out.println(now.toEpochDay() - yesterday.toEpochDay());
+        System.out.println(now.compareTo(yesterday));
+        System.out.println(yesterday.compareTo(now));
+        System.out.println(now.compareTo(now));
+        // System.out.println(now.compareTo(null)); // NPE
     }
 }
